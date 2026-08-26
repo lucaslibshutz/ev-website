@@ -8,32 +8,18 @@ import Footer from '@/components/Footer'
 // Autonomy team data
 const autonomyTeam = [
   {
-    name: 'Erica Jiang',
+    name: 'Lucas Libshutz',
     position: 'Autonomy Lead',
-    major: 'ECE',
-    year: '2028',
-    image: '/team/erica-jiang.png'
-  },
-  {
-    name: 'Sidharth Rao',
-    position: 'Autonomy Lead',
-    major: 'CS/ECE',
+    major: 'MAE',
     year: '2027',
-    image: '/team/sidharth-rao.jpg'
+    image: '/team/lucas-libshutz.jpg'
   },
   {
-    name: 'Eric Marchetti',
-    position: 'Autonomy Member',
-    major: 'CS',
-    year: '2026',
-    image: '/team/eric-marchetti.jpg'
-  },
-  {
-    name: 'Zachary Chosed',
-    position: 'Autonomy Member',
-    major: 'CS',
-    year: '2025',
-    image: '/team/zachary-chosed.jpg'
+    name: 'Cam Mezzacane',
+    position: 'Autonomy Lead',
+    major: 'CS/Math',
+    year: '2028',
+    image: '/team/cam-mezzacane.jpg'
   },
   {
     name: 'Sophia Tsang',
@@ -43,11 +29,25 @@ const autonomyTeam = [
     image: '/team/sophia-tsang.jpg'
   },
   {
-    name: 'Myles Pasetsky',
+    name: 'Ethan Berkowitz',
     position: 'Autonomy Member',
-    major: 'ECE',
-    year: '2027',
-    image: '/team/myles-pasetsky.jpg'
+    major: 'ECE/CS',
+    year: '2029',
+    image: '/team/ethan-berkowitz.jpg'
+  },
+  {
+    name: 'Jaiden Grimminck',
+    position: 'Autonomy Member',
+    major: 'CS',
+    year: '2029',
+    image: '/team/jaiden-grimminck.jpg'
+  },
+  {
+    name: 'Smriti Kumar',
+    position: 'Autonomy Member',
+    major: 'CS/ECE',
+    year: '2029',
+    image: '/team/smriti-kumar.jpg'
   },
   {
     name: 'Utku Melemetci',
@@ -57,48 +57,42 @@ const autonomyTeam = [
     image: '/team/utku-melemetci.jpg'
   },
   {
-    name: 'Zephan Sanghani',
+    name: 'Ishaan Parikh',
     position: 'Autonomy Member',
-    major: 'CS',
+    major: 'ECE',
+    year: '2029',
+    image: '/team/ishaan-parikh.jpg'
+  },
+  {
+    name: 'Surya Chandaskaran',
+    position: 'Autonomy Member',
+    major: 'CS/ORIE',
+    year: '2029',
+    image: '/team/placeholder.svg'
+  },
+  {
+    name: 'Sidharth Rao',
+    position: 'Autonomy Advisor',
+    major: 'CS/ECE',
     year: '2027',
-    image: '/team/zephan-sanghani.jpg'
+    image: '/team/sidharth-rao.jpg'
   },
-  {
-    name: 'Sameer Mehta',
-    position: 'Autonomy Member',
-    major: 'CS',
-    year: '2028',
-    image: '/team/sameer-mehta.jpg'
-  },
-  {
-    name: 'Jason Klein',
-    position: 'Autonomy Member/Advisor',
-    major: 'CS',
-    year: '2026',
-    image: '/team/jason-klein.jpg'
-  },
-  {
-    name: 'Jess Wang',
-    position: 'Autonomy Member',
-    major: 'CS',
-    year: '2028',
-    image: '/team/jess-wang.jpg'
-  },
-  {
-    name: 'Ibrahim Ahmed',
-    position: 'Autonomy Member',
-    major: 'ECE/CS',
-    year: '2028',
-    image: '/team/ibrahim-ahmed.jpg'
-  },
-  {
-    name: 'Cam Mazzacane',
-    position: 'Autonomy Member',
-    major: 'CS/Math',
-    year: '2028',
-    image: '/team/cam-mazzacane.jpg'
-  }
 ]
+
+const sortTeamMembers = <T extends { name: string; year: string }>(members: T[]) =>
+  [...members].sort((a, b) => {
+    const yearComparison = Number(a.year) - Number(b.year);
+    if (yearComparison !== 0) return yearComparison;
+
+    const aLastName = a.name.split(' ').at(-1) ?? a.name;
+    const bLastName = b.name.split(' ').at(-1) ?? b.name;
+    return aLastName.localeCompare(bLastName);
+  });
+
+const autonomyLeads = sortTeamMembers(autonomyTeam.filter((member) => member.position.includes('Lead')));
+const autonomyRegularMembers = autonomyTeam.filter((member) => !member.position.includes('Lead') && !member.position.includes('Advisor'));
+const autonomyAdvisors = autonomyTeam.filter((member) => member.position.includes('Advisor'));
+const autonomyMembers = [...sortTeamMembers(autonomyRegularMembers), ...sortTeamMembers(autonomyAdvisors)];
 
 // Team member card component
 const TeamMemberCard = ({ member, index }: { member: typeof autonomyTeam[0], index: number }) => (
@@ -127,52 +121,32 @@ const TeamMemberCard = ({ member, index }: { member: typeof autonomyTeam[0], ind
 export default function AutonomyTeam() {
   return (
     <div className="min-h-screen bg-gray-900">
-      {/* Header */}
-      <section className="bg-gradient-to-r from-red-600 to-red-700 py-16 pt-24 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center justify-center mb-6"
-          >
-            <Brain className="w-12 h-12 mr-4" />
-            <h1 className="text-4xl md:text-5xl font-bold">Autonomy Team</h1>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-red-100 max-w-3xl mx-auto"
-          >
-            We develop autonomous driving systems, computer vision, and AI algorithms that enable our vehicles to navigate intelligently.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-12 bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-red-400 mb-2">13</div>
-              <div className="text-gray-300">Team Members</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-red-400 mb-2">Level 2</div>
-              <div className="text-gray-300">Autonomy Target</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-red-400 mb-2">AI/ML</div>
-              <div className="text-gray-300">Core Technologies</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-red-400 mb-2">Vision</div>
-              <div className="text-gray-300">Primary Sensor</div>
-            </div>
+      <div className="relative overflow-hidden text-white">
+        <Image src="/team/groups/autonomy.jpg" alt="" fill priority className="object-cover" />
+        <div className="absolute inset-0 bg-black/60" />
+        {/* Header */}
+        <section className="relative z-10 flex min-h-[420px] items-center py-20 pt-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-6"
+            >
+              <h1 className="text-4xl md:text-5xl font-bold">Autonomy Team</h1>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl text-red-100 max-w-3xl mx-auto"
+            >
+              We develop autonomous driving systems, computer vision, and AI algorithms that enable our vehicles to navigate intelligently.
+            </motion.p>
           </div>
-        </div>
-      </section>
+        </section>
+
+      </div>
 
       {/* Focus Areas */}
       <section className="py-16 bg-gray-900">
@@ -260,16 +234,29 @@ export default function AutonomyTeam() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Meet Our Team
+              Autonomy Leads
             </h2>
-            <p className="text-xl text-gray-300">
-              Leading the future of autonomous vehicle technology
-            </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
-            {autonomyTeam.map((member, index) => (
+          <div className="flex flex-wrap justify-center gap-8 mb-16">
+            {autonomyLeads.map((member, index) => (
               <TeamMemberCard key={member.name} member={member} index={index} />
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-2xl font-bold text-white mb-2">Members</h3>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            {autonomyMembers.map((member, index) => (
+              <TeamMemberCard key={member.name} member={member} index={index + autonomyLeads.length} />
             ))}
           </div>
         </div>

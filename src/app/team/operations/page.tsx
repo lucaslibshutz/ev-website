@@ -7,34 +7,54 @@ import Footer from '@/components/Footer'
 
 const operationsTeam = [
     {
-        name: 'Tatum McLaughlin',
-        position: 'Operations Lead',
-        major: 'ORIE',
-        year: '2027',
-        image: '/team/tatum-mclaughlin.jpg'
-    },
-    {
         name: 'Lena Schapiro',
-        position: 'Operations Member',
+        position: 'Operations Lead',
         major: 'ORIE',
         year: '2028',
         image: '/team/lena-schapiro.jpg'
     },
     {
-        name: 'Bator Diop',
+        name: 'Jessie Shi',
         position: 'Operations Member',
         major: 'ORIE',
-        year: '2028',
-        image: '/team/bator-diop.jpg'
+        year: '2029',
+        image: '/team/jessie-shi.jpg'
     },
     {
-        name: 'Eunice Son',
+        name: 'Kayra Tosun',
+        position: 'Operations Member',
+        major: 'ORIE',
+        year: '2029',
+        image: '/team/kayra-tosun.jpg'
+    },
+    {
+        name: 'Lauren Stanley',
+        position: 'Operations Member',
+        major: 'ORIE',
+        year: '2029',
+        image: '/team/lauren-stanley.jpg'
+    },
+    {
+        name: 'Mino Furtado',
         position: 'Operations Member',
         major: 'ORIE',
         year: '2027',
-        image: '/team/eunice-son.jpg'
+        image: '/team/minori-furtado.jpg'
     }
 ]
+
+const sortTeamMembers = <T extends { name: string; year: string }>(members: T[]) =>
+    [...members].sort((a, b) => {
+        const yearComparison = Number(a.year) - Number(b.year);
+        if (yearComparison !== 0) return yearComparison;
+
+        const aLastName = a.name.split(' ').at(-1) ?? a.name;
+        const bLastName = b.name.split(' ').at(-1) ?? b.name;
+        return aLastName.localeCompare(bLastName);
+    });
+
+const operationsLeads = sortTeamMembers(operationsTeam.filter((member) => member.position.includes('Lead')));
+const operationsMembers = sortTeamMembers(operationsTeam.filter((member) => !member.position.includes('Lead')));
 
 const TeamMemberCard = ({ member, index }: {member: typeof operationsTeam[0], index: number }) => (
     <motion.div
@@ -63,15 +83,16 @@ export default function OperationsTeam() {
     return (
         <div className="min-h-screen bg-gray-900">
         {/* Header */}
-            <section className="bg-gradient-to-r from-red-600 to-red-700 py-16 pt-24 text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <section className="relative flex min-h-[420px] items-center overflow-hidden py-20 pt-28 text-white">
+                <Image src="/team/groups/operations.jpg" alt="" fill priority className="object-cover" />
+                <div className="absolute inset-0 bg-black/60" />
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <motion.div
                         initial={{ opacity: 0, y:20 }}
                         animate={{ opacity: 1, y:0 }}
                         transition={{ duration: 0.6 }}
-                        className="flex items-center justify-center mb-6"
+                        className="text-center mb-6"
                     >
-                        <Users className="w-12 h-12 mr-4" />
                         <h1 className="text-4xl md:text-5xl font-bold">Operations Team</h1>
                     </motion.div>
                     <motion.p
@@ -157,16 +178,29 @@ export default function OperationsTeam() {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Meet Our Team
+                            Operations Lead
                         </h2>
-                        <p className="text-gray-300 text-lg">
-                            Our operations team brings together diverse skills in business, marketing, and project management to create a sustainable foundation for our technical innovation and competitive success.
-                        </p>
                     </motion.div>
 
-                    <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
-                        {operationsTeam.map((member,index) => (
+                    <div className="flex flex-wrap justify-center gap-8 mb-16">
+                        {operationsLeads.map((member,index) => (
                             <TeamMemberCard key={member.name} member={member} index={index} />
+                        ))}
+                    </div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-8"
+                    >
+                        <h3 className="text-2xl font-bold text-white mb-2">Members</h3>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                        {operationsMembers.map((member,index) => (
+                            <TeamMemberCard key={member.name} member={member} index={index + operationsLeads.length} />
                         ))}
                     </div>
                 </div>
