@@ -1,25 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import "@fontsource/oxanium/400.css";
+import "@fontsource/oxanium/500.css";
+import "@fontsource/oxanium/600.css";
+import "@fontsource/oxanium/700.css";
 import "./globals.css";
 import Header from "./Header";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: "Cornell Electric Vehicles",
   description: "Cornell's foremost project team dedicated to building autonomous, hyper-efficient electric vehicles. Operating at the pace of a startup, producing industry-grade vehicles that compete at the highest levels.",
   icons: {
-    icon: '/cev-favicon.ico',
-    shortcut: '/cev-favicon.ico',
-    apple: '/cev-logo.png',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 
@@ -30,14 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" type="image/x-icon" href="/cev-favicon.ico" />
-        <link rel="shortcut icon" href="/cev-favicon.ico" />
-        <link rel="apple-touch-icon" href="/cev-logo.png" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <Header />
         {children}
       </body>

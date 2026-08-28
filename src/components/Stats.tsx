@@ -1,18 +1,64 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
+
+const stats = [
+  { value: 10, suffix: '+', label: 'majors' },
+  { value: 85, suffix: '', label: 'members' },
+  { value: 5, suffix: '', label: 'subteams' },
+  { value: 50, suffix: '%', label: 'women' },
+]
 
 export default function Stats() {
-  const stats = [
-    { number: '10+', label: 'majors' },
-    { number: '85', label: 'members' },
-    { number: '5', label: 'subteams' },
-    { number: '50%', label: 'women' },
-  ]
+  const sectionRef = useRef<HTMLElement>(null)
+  const [hasStarted, setHasStarted] = useState(false)
+  const [counts, setCounts] = useState(stats.map(() => 0))
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setHasStarted(true)
+        observer.disconnect()
+      }
+    }, { threshold: 0.35 })
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!hasStarted) return
+
+    const startTime = performance.now()
+    const duration = 1600
+    let animationFrame = 0
+
+    const animate = (time: number) => {
+      const progress = Math.min((time - startTime) / duration, 1)
+      const easedProgress = 1 - Math.pow(1 - progress, 3)
+      setCounts(stats.map((stat) => Math.round(stat.value * easedProgress)))
+      if (progress < 1) animationFrame = requestAnimationFrame(animate)
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationFrame)
+  }, [hasStarted, stats])
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-red-900 to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} className="relative overflow-hidden py-20 text-white">
+      <Image
+        src="/comp-moving-car.JPG"
+        alt="Cornell Electric Vehicles car at competition"
+        fill
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-black/65" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +85,7 @@ export default function Stats() {
               className="text-center"
             >
               <div className="text-5xl md:text-6xl font-bold text-white mb-2">
-                {stat.number}
+                {counts[index]}{stat.suffix}
               </div>
               <div className="text-xl text-red-100 font-medium uppercase tracking-wider">
                 {stat.label}

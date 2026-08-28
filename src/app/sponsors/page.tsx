@@ -2,11 +2,16 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Heart, Handshake } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import Footer from '@/components/Footer';
 import Link from 'next/link'
 
 const sponsors = [
+  {
+    name: 'TDK',
+    logo: '/sponsors/TDK_LOGO.png',
+    website: 'https://www.tdk.com/en/index.html'
+  },
   {
     name: "NVIDIA",
     logo: "/sponsors/nvidia-logo.png", // Replace with actual sponsor logo
@@ -102,6 +107,14 @@ const sponsors = [
     logo: "/sponsors/kurtz-logo.avif",
     website: "https://kurtzersa.com"
   },
+  {
+    name: "Korad",
+    logo: '/sponsors/korad_logo.png',
+    website: "https://www.koradtechnology.com/"
+  },
+  {name: "TexTech",
+    logo: '/sponsors/tex-logo.png',
+    website: "https://www.textech.co.jp/en/"}
 ];
 
 const sponsorshipTiers = [
@@ -172,15 +185,16 @@ export default function Sponsors() {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Header */}
-      <section className="bg-gradient-to-r from-red-600 to-red-700 py-16 pt-24 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+      <section className="relative flex min-h-[420px] items-center overflow-hidden py-20 pt-28 text-white">
+        <Image src="/sunset-track.jpg" alt="Cornell Electric Vehicles at sunset on track" fill priority className="object-cover" />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center mb-6"
+            className="text-center mb-6"
           >
-            <Handshake className="w-12 h-12 mr-4" />
             <h1 className="text-5xl font-bold">Our Sponsors</h1>
           </motion.div>
           <motion.p
@@ -284,7 +298,7 @@ export default function Sponsors() {
               Join our mission to advance electric vehicle technology and support the next generation of engineers.
             </p>
             <a
-              href="https://drive.google.com/file/d/1sOx76vTJu_u-nbNxcC6NlEa43vC49LW7/view"
+              href="https://drive.google.com/file/d/1Q_YE834QOpAB5jCGuT5cxrJBnuHpwlFX/view?usp=drive_link"
               className="border-white border-3 hover:bg-gray-700 text-white px-8 py-4 rounded-lg text-xl font-semibold transition-all transform hover:scale-105 shadow-lg inline-block mb-8"
             >
              View our Sponsorship Packet 

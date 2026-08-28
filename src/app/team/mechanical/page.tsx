@@ -6,45 +6,37 @@ import { Wrench, Settings, Cog, Wind } from 'lucide-react';
 import Footer from '@/components/Footer'
 
 // Mechanical team data organized by subteams
-//! Add current sophomores
 const mechanicalLeadership = [
   {
-    name: 'Mackemey Munion',
+    name: 'Serkan Yurday',
     position: 'Mechanical Lead',
     major: 'MAE',
-    year: '2026',
-    image: '/team/mackemey-munion.jpg'
+    year: '2028',
+    image: '/team/serkan-yurday.jpg'
   },
   {
-    name: 'Jordan Vogel',
+    name: 'Albert Zheng',
     position: 'Mechanical Lead',
     major: 'MAE',
-    year: '2027',
-    image: '/team/jordan-vogel.jpg'
+    year: '2028',
+    image: '/team/albert-zheng.jpg'
   }
 ];
 
 const chassisTeam = [
   {
-    name: 'Lucas Libshutz',
+    name: 'Joe Dalton',
     position: 'Chassis Subteam Lead',
     major: 'MAE',
     year: '2027',
-    image: '/team/lucas-libshutz.jpg'
+    image:'/team/joseph-dalton.jpg'
   },
   {
-    name: 'Zach Feldman',
-    position: 'Chassis Member',
-    major: 'MAE',
-    year: '2027',
-    image:'/team/zach-feldman.jpg'
-  },
-  {
-    name: 'Serkan Yurday',
-    position: 'Chassis Member',
+    name: 'Jackson Skagen',
+    position: 'Chassis Subteam Lead',
     major: 'MAE',
     year: '2028',
-    image: '/team/serkan-yurday.jpg'
+    image: '/team/jackson-skagen.jpg'
   },
   {
     name: 'Yohanne Lin',
@@ -67,29 +59,22 @@ const chassisTeam = [
     year: '2028',
     image: '/team/ana-mahuad.jpg'
   },
+  {
+    name: 'Isabella Rodriguez',
+    position: 'Chassis Member',
+    major: 'MAE',
+    year: '2029',
+    image: '/team/isabella-rodriguez.jpg'
+  },
 ];
 
 const drivetrainTeam = [
   {
-    name: 'Christina Ge',
+    name: 'Emely Benavides',
     position: 'Drivetrain Subteam Lead',
     major: 'MAE',
-    year: '2027',
-    image: '/team/christina-ge.jpg'
-  },
-  {
-    name: 'Ava Ianuale',
-    position: 'Drivetrain Member',
-    major: 'MAE',
-    year: '2026',
-    image: '/team/ava-ianuale.jpg'
-  },
-  {
-    name: 'Nathan Varghese',
-    position: 'Drivetrain Member',
-    major: 'MAE',
-    year: '2027',
-    image: '/team/nathan-varghese.jpg'
+    year: '2028',
+    image: '/team/emely-benavides.jpg'
   },
   {
     name: 'Alexis Barrow',
@@ -99,72 +84,138 @@ const drivetrainTeam = [
     image: '/team/alexis-barrow.jpg'
   },
   {
-    name: 'Emely Benavides',
+    name: 'Anna Shub',
     position: 'Drivetrain Member',
     major: 'MAE',
-    year: '2028',
-    image: '/team/emely-benavides.jpg'
+    year: '2029',
+    image: '/team/anna-shub.jpg'
   },
   {
-    name: 'Nora Kingwell',
+    name: 'Ian Olenich',
     position: 'Drivetrain Member',
     major: 'MAE',
-    year: '2028',
-    image: '/team/nora-kingwell.jpg'
+    year: '2029',
+    image: '/team/ian-olenich.jpg'
   },
   {
-    name: 'Jonathan Wan',
+    name: 'Zachary Davidson',
     position: 'Drivetrain Member',
     major: 'MAE',
-    year: '2028',
-    image: '/team/jonathan-wan.jpg'
+    year: '2029',
+    image: '/team/placeholder.svg'
   },
-];
+  ];
 
 const steeringTeam = [
   {
-    name: 'Cion Kim',
-    position: 'Steering Subteam Lead',
-    major: 'MAE',
-    year: '2027',
-    image: '/team/cion-kim.jpg'
-  },
-  {
-    name: 'Tadg Manna',
-    position: 'Steering Member',
-    major: 'MAE',
-    year: '2026',
-    image: '/team/tadg-manna.jpg'
-  },
-  {
-    name: "Shashank Chalamsetty",
-    position: "Steering Member",
-    major: "MAE",
-    year: "2026",
-    image: "/team/shashank-chalamalasetty.jpg"
-  },
-  {
-    name: 'Aahil Ali',
-    position: 'Steering Member',
-    major: 'MAE',
-    year: '2027',
-    image: '/team/aahil-ali.jpg'
-  },
-  {
     name: "Lydia Woodall",
-    position: "Steering Member",
+    position: "Steering Subteam Lead",
     major: "MAE",
     year: "2028",
     image: "/team/lydia-woodall.jpg"
   },
+
+  // {
+  //   name: 'Aahil Ali',
+  //   position: 'Steering Member',
+  //   major: 'MAE',
+  //   year: '2027',
+  //   image: '/team/aahil-ali.jpg'
+  // },
   {
-    name: "Albert Zheng",
-    position: "Steering Member",
-    major: "MAE",
-    year: "2028",
-    image: "/team/albert-zheng.jpg"
+    name: 'Olivia Mei',
+    position: 'Steering Member',
+    major: 'MAE',
+    year: '2028',
+    image:'/team/placeholder.svg'
+  },
+  {
+    name: 'Ashley Johnny',
+    position: 'Steering Member',
+    major: 'ECE',
+    year: '2029',
+    image: '/team/ashley-johnny.jpg'
+  },
+  {
+    name: 'Hamza Waseem',
+    position: 'Steering Member',
+    major: 'MAE',
+    year: '2029',
+    image: '/team/hamza-waseem.jpg'
+  },
+  {
+    name: 'Magnus Simmons',
+    position: 'Steering Member',
+    major: 'ECE',
+    year: '2029',
+    image: '/team/magnus-simmons.jpg'
+  },
+  {
+    name: 'Neha Chigurupati',
+    position: 'Steering Member',
+    major: 'MAE',
+    year: '2029',
+    image: '/team/neha-chigurupati.jpg'
+  },
+  {
+    name: 'Samiksha Emmaneni',
+    position: 'Steering Member',
+    major: 'MAE',
+    year: '2029',
+    image: '/team/samiksha-emmaneni.jpg'
   },
 ];
+
+const suspensionTeam = [
+  {
+    name: 'Jonathan Wan',
+    position: 'Suspension Subteam Lead',
+    major: 'MAE',
+    year: '2028',
+    image: '/team/jonathan-wan.jpg'
+  },
+  {
+    name: 'Jackson Skagen',
+    position: 'Suspension Member',
+    major: 'MAE',
+    year: '2029',
+    image: '/team/jackson-skagen.jpg'
+  },
+  {
+    name: 'Ei Thiri Kyaw',
+    position: 'Suspension Member',
+    major: 'MAE',
+    year: '2028',
+    image: '/team/ei-thiri-kyaw.jpg'
+  },
+  {
+    name: 'Hamza Waseem',
+    position: 'Suspension Member',
+    major: 'MAE',
+    year: '2029',
+    image: '/team/hamza-waseem.jpg'
+  },
+];
+
+const sortTeamMembers = <T extends { name: string; year: string; position: string }>(members: T[]) =>
+  [...members].sort((a, b) => {
+    const aIsLead = a.position.toLowerCase().includes('lead') ? 0 : 1;
+    const bIsLead = b.position.toLowerCase().includes('lead') ? 0 : 1;
+    if (aIsLead !== bIsLead) return aIsLead - bIsLead;
+
+    const yearComparison = Number(a.year) - Number(b.year);
+    if (yearComparison !== 0) return yearComparison;
+
+    const aLastName = a.name.split(' ').at(-1) ?? a.name;
+    const bLastName = b.name.split(' ').at(-1) ?? b.name;
+    return aLastName.localeCompare(bLastName);
+  });
+
+const sortedMechanicalLeadership = sortTeamMembers(mechanicalLeadership);
+const sortedChassisTeam = sortTeamMembers(chassisTeam);
+const sortedDrivetrainTeam = sortTeamMembers(drivetrainTeam);
+const sortedSteeringTeam = sortTeamMembers(steeringTeam);
+const sortedSuspensionTeam = sortTeamMembers(suspensionTeam);
 
 // Team member card component
 const TeamMemberCard = ({ member, index }: { member: typeof mechanicalLeadership[0], index: number }) => (
@@ -194,16 +245,17 @@ export default function MechanicalPage() {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-500 to-red-600 py-16 pt-24 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative flex min-h-[420px] items-center overflow-hidden py-20 pt-28 text-white">
+        <Image src="/team/groups/mechanical.jpg" alt="" fill priority className="object-cover" />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center mb-6"
+            className="text-center mb-6"
             viewport={{ once: true }}
           >
-            <Wrench className="w-12 h-12 mr-4" />
             <h1 className="text-4xl md:text-5xl font-bold">Mechanical Team</h1>
           </motion.div>
           <motion.p
@@ -337,14 +389,11 @@ export default function MechanicalPage() {
             className="text-center mb-12"
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-white mb-4">Leadership</h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-              Our mechanical team leaders coordinate across all subteams to ensure cohesive design and manufacturing.
-            </p>
+            <h2 className="text-3xl font-bold text-white mb-4">Mechanical Leads</h2>
           </motion.div>
           
           <div className="flex flex-wrap justify-center gap-8 mb-16">
-            {mechanicalLeadership.map((member, index) => (
+            {sortedMechanicalLeadership.map((member, index) => (
               <div key={index} className="w-full sm:w-80">
                 <TeamMemberCard member={member} index={index} />
               </div>
@@ -366,7 +415,7 @@ export default function MechanicalPage() {
           </motion.div>
           
           <div className="flex flex-wrap justify-center gap-8 mb-16">
-            {chassisTeam.map((member, index) => (
+            {sortedChassisTeam.map((member, index) => (
               <div key={index} className="w-full sm:w-80">
                 <TeamMemberCard member={member} index={index} />
               </div>
@@ -388,7 +437,7 @@ export default function MechanicalPage() {
           </motion.div>
           
           <div className="flex flex-wrap justify-center gap-8 mb-16">
-            {drivetrainTeam.map((member, index) => (
+            {sortedDrivetrainTeam.map((member, index) => (
               <div key={index} className="w-full sm:w-80">
                 <TeamMemberCard member={member} index={index} />
               </div>
@@ -410,7 +459,29 @@ export default function MechanicalPage() {
           </motion.div>
           
           <div className="flex flex-wrap justify-center gap-8">
-            {steeringTeam.map((member, index) => (
+            {sortedSteeringTeam.map((member, index) => (
+              <div key={index} className="w-full sm:w-80">
+                <TeamMemberCard member={member} index={index} />
+              </div>
+            ))}
+          </div>
+
+          {/* Suspension Subteam */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 mt-16"
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold text-white mb-2">Suspension Subteam</h3>
+            <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+              Designs suspension and structural components for vehicle control and stability
+            </p>
+          </motion.div>
+          
+          <div className="flex flex-wrap justify-center gap-8">
+            {sortedSuspensionTeam.map((member, index) => (
               <div key={index} className="w-full sm:w-80">
                 <TeamMemberCard member={member} index={index} />
               </div>
